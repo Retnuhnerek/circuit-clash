@@ -1,5 +1,5 @@
 {
-    "name": "Circuit Clash - Copy",
+    "name": "Circuit Clash",
     "version": "0.1.2",
     "description": "",
     "dependencies": {
@@ -23,5 +23,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }

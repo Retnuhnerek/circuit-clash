@@ -5,10 +5,14 @@ namespace SpriteKind {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Border, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     Car.setPosition(73, 59)
+    Car_2.setPosition(73, 59)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(50)
     mySprite.setPosition(200, 0)
+})
+controller.player2.onEvent(ControllerEvent.Connected, function () {
+    Car_2.setPosition(73, 59)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -19,6 +23,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     Enemy_Car.startEffect(effects.fire, 500)
 })
 let Enemy_Car: Sprite = null
+let Car_2: Sprite = null
 let mySprite: Sprite = null
 let Car: Sprite = null
 info.setLife(3)
@@ -1223,6 +1228,26 @@ mySprite = sprites.create(img`
     . . . . 8 . . . . . . . . . . . 
     `, SpriteKind.Food)
 mySprite.setPosition(200, 0)
+Car_2 = sprites.create(img`
+    . . . . . . a a c c a a . . . . 
+    . . . . . a 3 3 3 3 3 3 a . . . 
+    . . . . 3 c 3 3 3 3 3 3 c 3 . . 
+    . . . a 3 c d 3 3 3 3 3 c 3 a . 
+    . . . f 3 3 d 3 3 3 3 3 c 3 f . 
+    . . . f 3 3 d 3 3 3 3 3 3 3 f . 
+    . . . f 3 3 d 3 3 3 3 3 3 3 f . 
+    . . . f 3 c 3 d d 3 3 3 c 3 f . 
+    . . . a 3 c a c c c c a c 3 a . 
+    . . . a 3 a c b b b b c a 3 a . 
+    . . . a 3 a b b b b b b a 3 a . 
+    . . . a a a a a a a a a a a a . 
+    . . . f a d a a a a a a d a f . 
+    . . . f a 3 d a a a a d 3 a f . 
+    . . . f f a a a a a a a a f f . 
+    . . . . f f . . . . . . f f . . 
+    `, SpriteKind.Player)
+controller.player2.moveSprite(Car_2, 100, 0)
+Car_2.setPosition(0, 0)
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(1)
 })
