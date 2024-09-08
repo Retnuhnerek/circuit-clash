@@ -1269,7 +1269,7 @@ forever(function () {
 forever(function () {
     pause(5000)
     Car_Crash.setPosition(randint(50, 100), 0)
-    Car_Crash.setVelocity(0, 200)
+    Car_Crash.setVelocity(0, 100)
     pause(500)
     Car_Crash.setPosition(1000, 0)
 })
