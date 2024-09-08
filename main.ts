@@ -13,12 +13,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     pause(100)
-    Car_Crash.setPosition(1000, 0)
+    Enemy_Car.setPosition(1000, 0)
     scene.cameraShake(4, 500)
-    Car.startEffect(effects.fire, 500)
-    Car_Crash.startEffect(effects.fire, 500)
+    Enemy_Car.startEffect(effects.fire, 500)
+    Enemy_Car.startEffect(effects.fire, 500)
 })
-let Car_Crash: Sprite = null
+let Enemy_Car: Sprite = null
 let mySprite: Sprite = null
 let Car: Sprite = null
 info.setLife(3)
@@ -1246,32 +1246,32 @@ forever(function () {
     Tree.setPosition(17, 81)
     pause(100)
     Tree.setPosition(17, 101)
-    Car_Crash = sprites.create(img`
-        . . . . . . . 8 8 8 8 8 . . . . 
-        . . . . . 8 8 6 6 6 6 6 8 . . . 
-        . . . . 8 8 6 6 6 6 6 6 6 8 . . 
-        . . . . 8 9 7 6 6 6 6 6 7 b 8 . 
-        . . 8 8 9 9 7 7 6 6 6 6 7 9 b 8 
-        . 8 6 6 9 9 7 7 7 6 6 6 7 9 9 8 
-        8 6 6 6 9 9 6 7 7 7 7 7 6 9 9 8 
-        8 6 6 6 9 9 8 8 8 8 8 8 8 9 9 8 
-        8 6 6 6 9 b 8 b b b 8 b 8 b 9 8 
-        8 6 8 8 8 8 b b b b 8 b b 8 b 8 
-        8 8 3 3 8 8 6 6 6 6 8 6 6 8 8 8 
-        8 3 3 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 f f f 8 8 8 8 f f f 8 8 
-        . 8 8 f b c c f 8 8 f b c c f . 
-        . . . . b b f . . . . b b f . . 
+    Enemy_Car = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 6 6 6 6 6 6 . . . . 
+        . . . . . 6 6 9 9 6 6 6 6 . . . 
+        . . . . . c 9 6 6 6 6 6 c . . . 
+        . . . . 6 c 9 6 6 6 6 6 c 6 . . 
+        . . . 8 6 c 9 6 6 6 6 6 c 6 8 . 
+        . . . f 6 c 9 6 6 6 6 6 c 6 f . 
+        . . . f 8 c 6 6 6 6 6 6 c 8 f . 
+        . . . f 6 c 6 b b b b 6 c 6 f . 
+        . . . 8 6 6 b c c c c b 6 6 8 . 
+        . . . 8 8 b c c c c c c b 8 8 . 
+        . . . f 8 9 9 9 9 9 9 9 9 8 f . 
+        . . . f 8 d 6 6 6 6 6 6 d 8 f . 
+        . . . . 6 d d 6 6 6 6 d d 6 f . 
+        . . . . f 6 d 6 6 6 6 d 6 f . . 
+        . . . . . 8 6 6 6 6 6 6 8 . . . 
         `, SpriteKind.Enemy)
-    Car_Crash.setPosition(1000, 0)
+    Enemy_Car.setPosition(1000, 0)
 })
 forever(function () {
     pause(5000)
-    Car_Crash.setPosition(randint(50, 100), 0)
-    Car_Crash.setVelocity(0, 100)
+    Enemy_Car.setPosition(randint(50, 100), 0)
+    Enemy_Car.setVelocity(0, 100)
     pause(500)
-    Car_Crash.setPosition(1000, 0)
+    Enemy_Car.setPosition(1000, 0)
 })
 forever(function () {
     pause(10000)
