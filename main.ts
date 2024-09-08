@@ -6,6 +6,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Border, function (sprite, otherS
     info.changeLifeBy(-1)
     Car.setPosition(73, 59)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(50)
+    mySprite.setPosition(200, 0)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     pause(100)
@@ -15,6 +19,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     Car_Crash.startEffect(effects.fire, 500)
 })
 let Car_Crash: Sprite = null
+let mySprite: Sprite = null
 let Car: Sprite = null
 info.setLife(3)
 Car = sprites.create(img`
@@ -1199,6 +1204,25 @@ let Border_2 = sprites.create(img`
     7777777777777777
     `, SpriteKind.Border)
 Border_2.setPosition(41, 0)
+mySprite = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . 2 . . . 
+    . . . . . . . . . . . . 2 . . . 
+    . . . . . . . . . . . . . 2 . . 
+    . . . . . . . . . . . 2 2 . . . 
+    . . . . . . . . . . 2 . . . . . 
+    . . . . . . . . . 2 . . . . . . 
+    . . . . . . 8 8 1 . . . . . . . 
+    . . . . . 8 8 8 8 . . . . . . . 
+    . . . . 8 8 f 8 8 . . . . . . . 
+    . . . 8 8 f 8 8 8 . . . . . . . 
+    . . 8 8 f 8 8 8 . . . . . . . . 
+    . . 8 8 8 8 8 . . . . . . . . . 
+    . . . 8 8 8 . . . . . . . . . . 
+    . . . . 8 . . . . . . . . . . . 
+    `, SpriteKind.Food)
+mySprite.setPosition(200, 0)
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(1)
 })
@@ -1248,4 +1272,9 @@ forever(function () {
     Car_Crash.setVelocity(0, 200)
     pause(500)
     Car_Crash.setPosition(1000, 0)
+})
+forever(function () {
+    pause(10000)
+    mySprite.setPosition(randint(50, 100), 0)
+    mySprite.setVelocity(0, 50)
 })
